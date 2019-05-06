@@ -1,4 +1,4 @@
-from operator import *
+from surgeon import *
 from regulator import *
 from random import randint
 # from teleporter import *

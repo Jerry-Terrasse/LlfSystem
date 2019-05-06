@@ -6,10 +6,11 @@ started=False
 double_water=False
 
 def fight_start():
-  global ori_time,started,double_water
+  global ori_time,started,double_water,orix,oriy
   ori_time=time.time()
   started=True
   double_water=False
+  get_ori()
 
 def fight_end():
   global started,double_water
