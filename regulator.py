@@ -1,4 +1,5 @@
 import time
+from surgeon import *
 
 ori_time=int()
 cur_time=int()
@@ -6,7 +7,7 @@ started=False
 double_water=False
 
 def fight_start():
-  global ori_time,started,double_water,orix,oriy
+  global ori_time,started,double_water
   ori_time=time.time()
   started=True
   double_water=False

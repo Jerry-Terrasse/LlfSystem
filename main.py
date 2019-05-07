@@ -11,8 +11,7 @@ if __name__=='__main__':
   fight_start()
   while True:
     if randint(0,1):
-      xx=720
+      display_byname(randint(0,3),'bottom_lef')
     else:
-      xx=700
-    display(randint(0,3),xx,547)
+      display_byname(randint(0,3),'bottom_rig')
     wait()

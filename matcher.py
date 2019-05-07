@@ -1,7 +1,6 @@
 # Reference from http://bluewhale.cc/2017-09-22/use-python-opencv-for-image-template-matching-match-template.html
 
 import cv2
-import numpy as np
 
 def match(image,target):
   img=cv2.imread(image,0)
