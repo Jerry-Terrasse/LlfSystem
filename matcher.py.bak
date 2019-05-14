@@ -8,7 +8,7 @@ def simularity(image,target):
   tar=cv2.imread(target,0)
   ret,img=cv2.threshold(img,0,255,cv2.THRESH_BINARY|cv2.THRESH_OTSU)
   ret,tar=cv2.threshold(tar,0,255,cv2.THRESH_BINARY|cv2.THRESH_OTSU)
-  ret=cv2.compare(img,tar,cv2.CMP_EQ)
+  ret=cv2.compare(img,tar,cv2.CMP_NE)
   ret=np.sum(ret)
   return ret
 

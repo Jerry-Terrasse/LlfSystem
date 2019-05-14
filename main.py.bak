@@ -24,7 +24,7 @@ def Awave():
     if i!=ban:
       display_byname('card_'+str(i),position)
 
-def Defend():
+def Awave():
   ban=randint(0,3)
   if randint(0,1):
     position='bottom_lef'

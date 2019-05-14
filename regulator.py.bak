@@ -11,7 +11,7 @@ double_water=False
 def fight_start():
   global ori_time,started,double_water,pre_time
   ori_time=time.time()
-  pre_time=0
+  pre_time=-1
   started=True
   double_water=False
   get_ori()

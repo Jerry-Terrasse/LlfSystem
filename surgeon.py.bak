@@ -27,5 +27,9 @@ def display_byname(card,name):
   time.sleep(0.1)
   click(orix+poslib[name][0],oriy+poslib[name][1])
 
+def get_vector():
+  cur_x,cur_y=get_pos()
+  return cur_x-orix,cur_y-oriy
+
 if __name__=='__main__':
   print("Surgeon Here")
