@@ -1,4 +1,3 @@
-#
 # _*_ coding:UTF-8 _*_
 # some codes are imported from https://www.cnblogs.com/huidaoli/p/7398392.html
 import win32api
