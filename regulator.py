@@ -15,6 +15,7 @@ def fight_start():
     started=True
     double_water=False
     get_ori()
+    get_image("whole","0")
 
 def fight_end():
     global started,double_water
@@ -43,10 +44,14 @@ def Fight():
     cur_time=time.time()
     if cur_time-pre_time>=30:
         waves+=1
-        pre_time=cur_time
+        # pre_time=cur_time
         return True
     else:
         return False
+
+def set_pre_time():
+    global pre_time
+    pre_time=time.time()
 
 if __name__=='__main__':
     print("Regulator Here")

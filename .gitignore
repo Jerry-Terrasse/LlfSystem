@@ -1,4 +1,8 @@
 __pycache__
-
 Temp
 Achievements
+*.bak
+*.png
+
+*.lnk
+!Sources/*.png

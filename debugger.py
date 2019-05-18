@@ -15,3 +15,18 @@ def showimg(str):
     cv2.imshow('1',img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+def asdf():
+    img=cv2.imread("whole0.png")
+    tar=cv2.imread("whole1.png")
+    ret=img
+    x,y,z=img.shape
+    for i in range(x):
+        for j in range(y):
+            for k in range(z):
+                a=int(img[i][j][k])-int(tar[i][j][k])
+                if a<100 and a>-100:
+                    ret[i][j][k]=0
+                else:
+                    ret[i][j][k]=255
+    return ret
