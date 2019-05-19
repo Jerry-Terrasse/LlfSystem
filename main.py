@@ -1,11 +1,13 @@
 from surgeon import *
-from regulator import *
+import regulator as rgr
 from decoder import *
 from random import randint
 import time
+import sys
 # from teleporter import *
 # from matcher import *
 
+AUTO=False
 
 def herewego():
     if randint(0,1):
@@ -15,7 +17,7 @@ def herewego():
 
 
 def Awave():
-    set_pre_time()
+    rgr.set_pre_time()
     time.sleep(1)
     ban=randint(0,3)
     if bld_lef<bld_rig:
@@ -35,7 +37,8 @@ def Defend():
         position='bottom_rig'
     '''
     posx,posy=war_at()
-    display_bypos('card_'+str(randint(0,3)),posx,posy)
+    if rgr.started:
+        display_bypos('card_'+str(randint(0,3)),posx,posy+50)
     '''
     for i in range(4):
         if i!=ban:
@@ -44,24 +47,23 @@ def Defend():
     '''
 
 if __name__=='__main__':
-    print("LLF AK IOI !!!")
-    fight_start()
+    if len(sys.argv)>1:
+        AUTO=True
+    print("LLF AK IOI !!! && LJH AK IMO!!!")
+    rgr.fight_start()
+    get_ori()
     while True:
         water=get_water()
+        if not rgr.started:
+            if AUTO:
+                next_fight()
+                rgr.fight_start()
+                continue
+            else:
+                exit()
         bld_lef=get_bld("opp_bld_lef")
         bld_rig=get_bld("opp_bld_rig")
         print("%d WATER; %.2f%% LEFT; %.2f%% RIGHT;" % (water,bld_lef*100/38,bld_rig*100/38))
-        # print(water,"WATER;",str(bld_lef*100/38)+'%',"LEFTBLOOD")
-        if Fight():
-            if water>=9:
-                Awave()
-        elif water>=4:
+        if water>=4:
             Defend()
-        '''
-        if water>=8:
-            if Fight():
-                Awave()
-            else:
-                Defend()
-        '''
         time.sleep(1.5)

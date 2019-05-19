@@ -1,5 +1,6 @@
 from matcher import *
 from surgeon import *
+from regulator import *
 
 same_cnt=int()
 pre_water=int()
@@ -17,9 +18,10 @@ def get_water():
             ans=i
     if ans==pre_water:
         same_cnt+=1
-        if same_cnt>2:
-            print("Fight Finished.")
-            exit()
+        if same_cnt>3:
+            same_cnt=0
+            fight_end()
+            return -1
     else:
         same_cnt=0
         pre_water=ans
@@ -55,8 +57,8 @@ def war_at():
     if cnt:
         return retx//cnt,rety//cnt
     else:
-        print("Fight Finished.")
-        exit()
+        fight_end()
+        return 0,0
 
 if __name__=='__main__':
     print("Decoder Here")

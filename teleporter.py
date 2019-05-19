@@ -5,6 +5,7 @@ import win32con
 import win32gui
 from ctypes import *
 import time
+from random import randint
 
 VK_CODE = {
     'backspace':0x08,
@@ -188,7 +189,7 @@ def dclick(x=None,y=None):
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 
 def move_to(x,y):
-    windll.user32.SetCursorPos(x, y)
+    windll.user32.SetCursorPos(x+randint(-2,2), y+randint(-2,2))
 
 def key(str=''):
     for c in str:

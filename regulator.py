@@ -14,13 +14,11 @@ def fight_start():
     pre_time=0
     started=True
     double_water=False
-    get_ori()
-    get_image("whole","0")
 
 def fight_end():
-    global started,double_water
+    global started
+    print("Fight Finished.")
     started=False
-    double_water=True
 
 def time_past():
     global cur_time
