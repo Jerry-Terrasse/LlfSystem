@@ -1,6 +1,6 @@
-from surgeon import *
+import surgeon as sgn
 import regulator as rgr
-from decoder import *
+import decoder as dcd
 from random import randint
 import time
 import sys
@@ -8,6 +8,9 @@ import sys
 # from matcher import *
 
 AUTO=False
+water=int()
+bld_lef=int()
+bld_rig=int()
 
 def herewego():
     if randint(0,1):
@@ -26,7 +29,7 @@ def Awave():
         position='opp_lit_rig'
     for i in range(4):
         if i!=ban:
-            display_byname('card_'+str(i),position)
+            sgn.display_byname('card_'+str(i),position)
 
 def Defend():
     '''
@@ -36,9 +39,16 @@ def Defend():
     else:
         position='bottom_rig'
     '''
-    posx,posy=war_at()
-    if rgr.started:
-        display_bypos('card_'+str(randint(0,3)),posx,posy+50)
+    global water,bld_lef,bld_rig
+    posx,posy=dcd.war_at()
+    if posx or posy:
+        sgn.display_bypos('card_'+str(randint(0,3)),posx,posy+50)
+    elif water>=9:
+        if bld_lef<bld_rig:
+            position='bottom_lef'
+        else:
+            position='bottom_rig'
+        sgn.display_byname('card_'+str(randint(0,3)),position)
     '''
     for i in range(4):
         if i!=ban:
@@ -51,18 +61,18 @@ if __name__=='__main__':
         AUTO=True
     print("LLF AK IOI !!! && LJH AK IMO!!!")
     rgr.fight_start()
-    get_ori()
+    sgn.get_ori()
     while True:
-        water=get_water()
+        water=dcd.get_water()
         if not rgr.started:
             if AUTO:
-                next_fight()
+                sgn.next_fight()
                 rgr.fight_start()
                 continue
             else:
                 exit()
-        bld_lef=get_bld("opp_bld_lef")
-        bld_rig=get_bld("opp_bld_rig")
+        bld_lef=dcd.get_bld("opp_bld_lef")
+        bld_rig=dcd.get_bld("opp_bld_rig")
         print("%d WATER; %.2f%% LEFT; %.2f%% RIGHT;" % (water,bld_lef*100/38,bld_rig*100/38))
         if water>=4:
             Defend()

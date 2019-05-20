@@ -17,6 +17,7 @@ poslib={
     'fight':(125,440),'sure':(190,600),
     'whole_sta':(0,0),'whole_end':(381,677)
 }
+
 '''
 poslib={
     'bottom_lef':(-168,194),'bottom_rig':(-148,194),
