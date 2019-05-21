@@ -1,12 +1,14 @@
 import time
 from surgeon import *
 
+
 ori_time=int()
 cur_time=int()
 pre_time=int()
 waves=int()
 started=False
 double_water=False
+
 
 def fight_start():
     global ori_time,started,double_water,pre_time
@@ -50,6 +52,7 @@ def Fight():
 def set_pre_time():
     global pre_time
     pre_time=time.time()
+
 
 if __name__=='__main__':
     print("Regulator Here")

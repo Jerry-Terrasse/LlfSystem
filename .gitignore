@@ -3,6 +3,5 @@ Temp
 Achievements
 *.bak
 *.png
-
 *.lnk
 !Sources/*.png

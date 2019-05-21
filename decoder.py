@@ -2,21 +2,12 @@ from matcher import *
 from surgeon import *
 from regulator import *
 
+
 same_cnt=int()
 pre_water=int()
 
 ignore_rec=[(0,0,380,37),(161,37,217,105),(72,105,107,135),(271,105,306,135),(72,376,107,411),(161,411,217,470),(271,376,306,411),(0,511,380,676)]
 
-'''
-ignore_rec={
-    'opp_big_sta':(),'opp_big_end':(),
-    'opp_lit_lef_sta':(),'opp_lit_lef_end':(),
-    'opp_lit_rig_sta':(),'opp_lit_rig_end':(),
-    'slf_big_sta':(),'slf_big_end':(),
-    'slf_lit_lef_sta':(),'slf_lit_lef_end':(),
-    'slf_lit_rig_sta':(),'slf_lit_rig_end':()
-}
-'''
 
 def get_water():
     global pre_water,same_cnt
@@ -73,6 +64,7 @@ def war_at():
         return retx//cnt,rety//cnt
     else:
         return 0,0
+
 
 if __name__=='__main__':
     print("Decoder Here")

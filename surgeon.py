@@ -3,9 +3,11 @@ from matcher import *
 from shoter import *
 import time
 
+
 orix=int()
 oriy=int()
 to_ori=(-344,-313)
+
 poslib={
     'bottom_lef': (176, 507), 'bottom_rig': (196, 507),
     'card_0': (121, 604), 'card_1': (191, 604), 'card_2': (261, 604), 'card_3': (331, 604),
@@ -18,18 +20,6 @@ poslib={
     'whole_sta':(0,0),'whole_end':(381,677)
 }
 
-'''
-poslib={
-    'bottom_lef':(-168,194),'bottom_rig':(-148,194),
-    'card_0':(-223,291),'card_1':(-153,291),'card_2':(-83,291),'card_3':(-13,291),
-    'water_sta':(-240,327),'water_end':(-220,347),
-    'bridge_lef':(-255,-105),'bridge_rig':(-55,-105),
-    'opp_lit_lef':(-255,-160),'opp_lit_rig':(-55,-160),
-    'opp_bld_lef_sta':(-269,-211),'opp_bld_lef_end':(-230,-210),
-    'opp_bld_rig_sta':(-69,-211),'opp_bld_rig_end':(-30,-210)
-    }
-'''
-# Backup::poslib={'bottom_lef':(-168,194),'bottom_rig':(-148,194),'card_0':(-223,291),'card_1':(-153,291),'card_2':(-83,291),'card_3':(-13,291),'water_sta':(-271,327),'water_end':(-216,347),'bridge_lef':(-255,-15),'bridge_rig':(-55,-15)}
 
 def get_ori():
     global orix,oriy
@@ -61,6 +51,7 @@ def next_fight():
     time.sleep(3)
     click(orix+poslib['fight'][0],oriy+poslib['fight'][1])
     time.sleep(10)
+
 
 if __name__=='__main__':
     print("Surgeon Here")

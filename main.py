@@ -4,20 +4,19 @@ import decoder as dcd
 from random import randint
 import time
 import sys
-# from teleporter import *
-# from matcher import *
+
 
 AUTO=False
 water=int()
 bld_lef=int()
 bld_rig=int()
 
+
 def herewego():
     if randint(0,1):
         display_byname('card_'+str(randint(0,3)),'bottom_lef')
     else:
         display_byname('card_'+str(randint(0,3)),'bottom_rig')
-
 
 def Awave():
     rgr.set_pre_time()
@@ -32,13 +31,6 @@ def Awave():
             sgn.display_byname('card_'+str(i),position)
 
 def Defend():
-    '''
-    ban=randint(0,3)
-    if randint(0,1):
-        position='bottom_lef'
-    else:
-        position='bottom_rig'
-    '''
     global water,bld_lef,bld_rig
     posx,posy=dcd.war_at()
     if posx or posy:
@@ -49,12 +41,7 @@ def Defend():
         else:
             position='bottom_rig'
         sgn.display_byname('card_'+str(randint(0,3)),position)
-    '''
-    for i in range(4):
-        if i!=ban:
-            # display_byname('card_'+str(i),position)
-            display_bypos('card_'+str(i),posx,posy)
-    '''
+
 
 if __name__=='__main__':
     if len(sys.argv)>1:
