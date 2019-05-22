@@ -9,7 +9,7 @@ oriy=int()
 to_ori=(-344,-313)
 
 poslib={
-    'bottom_lef': (176, 507), 'bottom_rig': (196, 507),
+    'bottom_lef': (175, 505), 'bottom_rig': (200, 505),
     'card_0': (121, 604), 'card_1': (191, 604), 'card_2': (261, 604), 'card_3': (331, 604),
     'water_sta': (104,640), 'water_end': (124, 660),
     'bridge_lef': (89, 208), 'bridge_rig': (289, 208),

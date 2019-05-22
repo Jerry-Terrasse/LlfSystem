@@ -34,7 +34,14 @@ def get_water():
 def get_bld(which):
     ret=int()
     get_image(which)
-    bld=get_arr(which+".png",2)
+    bld=get_arr(which+".png")
+    for i in bld[0]:
+        ret+=i[0]<100 or i[0]>200
+        ret+=i[1]<100 or i[1]>200
+    if ret<20:
+        return -1
+    ret=0
+    bld=bld[:,:,2]
     bld=get_two(bld,144)
     line,col=bld.shape
     for i in range(col):

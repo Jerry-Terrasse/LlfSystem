@@ -12,12 +12,6 @@ bld_lef=int()
 bld_rig=int()
 
 
-def herewego():
-    if randint(0,1):
-        display_byname('card_'+str(randint(0,3)),'bottom_lef')
-    else:
-        display_byname('card_'+str(randint(0,3)),'bottom_rig')
-
 def Awave():
     rgr.set_pre_time()
     time.sleep(1)
@@ -34,8 +28,8 @@ def Defend():
     global water,bld_lef,bld_rig
     posx,posy=dcd.war_at()
     if posx or posy:
-        sgn.display_bypos('card_'+str(randint(0,3)),posx,posy+50)
-    elif water>=9:
+        sgn.display_bypos('card_'+str(randint(0,3)),posx,posy+30)
+    elif water>=8:
         if bld_lef<bld_rig:
             position='bottom_lef'
         else:
@@ -50,6 +44,19 @@ if __name__=='__main__':
     rgr.fight_start()
     sgn.get_ori()
     while True:
+        bld_lef=dcd.get_bld("opp_bld_lef")
+        bld_rig=dcd.get_bld("opp_bld_rig")
+        if bld_lef<0:
+            out_bld_lef="DESTROYED;"
+            bld_lef=100
+        else:
+            out_bld_lef="%.2f%% LEFT;" % (bld_lef*100/38)
+        if bld_rig<0:
+            bld_lef=100
+            out_bld_rig="DESTROYED;"
+        else:
+            out_bld_rig="%.2f%% RIGHT;" % (bld_rig*100/38)
+        # print("%d WATER; %.2f%% LEFT; %.2f%% RIGHT;" % (water,bld_lef*100/38,bld_rig*100/38))
         water=dcd.get_water()
         if not rgr.started:
             if AUTO:
@@ -58,9 +65,8 @@ if __name__=='__main__':
                 continue
             else:
                 exit()
-        bld_lef=dcd.get_bld("opp_bld_lef")
-        bld_rig=dcd.get_bld("opp_bld_rig")
-        print("%d WATER; %.2f%% LEFT; %.2f%% RIGHT;" % (water,bld_lef*100/38,bld_rig*100/38))
+        out_water="%d WATER;" % (water)
+        print(out_water,out_bld_lef,out_bld_rig)
         if water>=4:
             Defend()
-        time.sleep(1.5)
+        time.sleep(1)
