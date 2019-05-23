@@ -4,4 +4,6 @@ Achievements
 *.bak
 *.png
 *.lnk
-!Sources/*
+!Sources/*.png
+!Sources/cardlib/*.png
+!Sources/deck1/*.png
