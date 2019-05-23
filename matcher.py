@@ -3,7 +3,7 @@
 import cv2
 import numpy as np
 
-def simularity(image,target):
+def similarity(image,target):
     img=cv2.imread(image,0)
     tar=cv2.imread(target,0)
     img=get_two(img)

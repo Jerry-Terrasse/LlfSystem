@@ -21,6 +21,7 @@ poslib={
 	'card_1_sta':(160,575),'card_1_end':(218,617),
 	'card_2_sta':(232,575),'card_2_end':(290,617),
 	'card_3_sta':(304,575),'card_3_end':(362,617),
+    'field_sta':(28,65),'field_end':(350,500),
     'whole_sta':(0,0),'whole_end':(381,677)
 }
 
@@ -36,6 +37,14 @@ def get_ori():
 def display_bypos(card,desx,desy):
     click(orix+poslib[card][0],oriy+poslib[card][1])
     time.sleep(0.2)
+    if desx<poslib['field_sta'][0]:
+        desx=poslib['field_sta'][0]
+    if desx<poslib['field_sta'][1]:
+        desx=poslib['field_sta'][1]
+    if desx>poslib['field_end'][0]:
+        desx=poslib['field_end'][0]
+    if desx>poslib['field_end'][1]:
+        desx=poslib['field_end'][1]
     click(orix+desx,oriy+desy)
 
 def display_byname(card,name):

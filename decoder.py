@@ -8,10 +8,22 @@ pre_water=int()
 
 ignore_rec=[(0,0,380,37),(161,37,217,105),(72,105,107,135),(271,105,306,135),(72,376,107,411),(161,411,217,470),(271,376,306,411),(0,511,380,676)]
 
+deck = ("archer","wallbrkr","babydrgn","bomber","knight","minion","minipeeka","valkyrie")
 
 def get_card():
-    for i in range(0,4):
+    ans = ["","","",""]
+    for i in range(4):
         get_image("card_"+str(i))
+    for i in range(4):
+        maxv = 0
+        for j in deck:
+            val = similarity("Sources/deck1/"+j+".png","card_"+str(i)+".png")
+            if maxv < val:
+                maxv = val
+                ans[i] = j
+        if maxv < 420000:
+            ans[i] = "UNKNOWN"
+    return ans
 
 def get_water():
     global pre_water,same_cnt
@@ -20,8 +32,8 @@ def get_water():
     ans=int()
     get_image("water")
     for i in range(11):
-        val=simularity("water.png","Sources/water_"+str(i)+".png")
-        if(maxv<val):
+        val=similarity("water.png","Sources/water_"+str(i)+".png")
+        if maxv<val:
             maxv=val
             ans=i
     if ans==pre_water:
@@ -72,9 +84,11 @@ def war_at():
                     rety+=i
                     cnt+=1
     if cnt:
-        return retx//cnt,rety//cnt
+        # print("DECODER: war at (%d,%d,%d)" % (retx//cnt,rety//cnt,cnt))
+        print("war{%d,%d,%d}" % (retx//cnt,rety//cnt,cnt))
+        return retx//cnt,rety//cnt,cnt
     else:
-        return 0,0
+        return 0,0,0
 
 
 if __name__=='__main__':
