@@ -17,6 +17,10 @@ poslib={
     'opp_bld_lef_sta': (75, 102), 'opp_bld_lef_end': (114, 103),
     'opp_bld_rig_sta': (275, 102), 'opp_bld_rig_end': (314, 103),
     'fight':(125,440),'sure':(190,600),
+	'card_0_sta':(88,575),'card_0_end':(146,617),
+	'card_1_sta':(160,575),'card_1_end':(218,617),
+	'card_2_sta':(232,575),'card_2_end':(290,617),
+	'card_3_sta':(304,575),'card_3_end':(362,617),
     'whole_sta':(0,0),'whole_end':(381,677)
 }
 
