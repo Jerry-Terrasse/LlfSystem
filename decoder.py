@@ -9,6 +9,10 @@ pre_water=int()
 ignore_rec=[(0,0,380,37),(161,37,217,105),(72,105,107,135),(271,105,306,135),(72,376,107,411),(161,411,217,470),(271,376,306,411),(0,511,380,676)]
 
 
+def get_card():
+    for i in range(0,4):
+        get_image("card_"+str(i))
+
 def get_water():
     global pre_water,same_cnt
     maxv=int()
