@@ -8,7 +8,8 @@ pre_water=int()
 
 ignore_rec=[(0,0,380,37),(161,37,217,105),(72,105,107,135),(271,105,306,135),(72,376,107,411),(161,411,217,470),(271,376,306,411),(0,511,380,676)]
 
-deck = ("archer","wallbrkr","babydrgn","bomber","knight","minion","minipeeka","valkyrie")
+# deck = ("archer","wallbrkr","babydrgn","bomber","knight","minion","gobbarrel","valkyrie")
+deck = ("archer","wallbrkr","babydrgn","witch","skegiant","arrows","gobbarrel","valkyrie")
 
 def get_card():
     ans = ["","","",""]
@@ -23,6 +24,7 @@ def get_card():
                 ans[i] = j
         if maxv < 420000:
             ans[i] = "UNKNOWN"
+    print(ans)
     return ans
 
 def get_water():
@@ -76,7 +78,7 @@ def war_at():
     x,y,z=map.shape
     for rec in ignore_rec:
         map[rec[1]:rec[3],rec[0]:rec[2],:] = 0
-    for i in range(x):
+    for i in range(280,x):
         for j in range(y):
             for k in range(z):
                 if map[i][j][k]:
@@ -88,6 +90,7 @@ def war_at():
         print("war{%d,%d,%d}" % (retx//cnt,rety//cnt,cnt))
         return retx//cnt,rety//cnt,cnt
     else:
+        print("war{}")
         return 0,0,0
 
 

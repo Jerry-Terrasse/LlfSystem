@@ -12,8 +12,8 @@ poslib={
     'bottom_lef': (175, 505), 'bottom_rig': (200, 505),
     'card_0': (121, 604), 'card_1': (191, 604), 'card_2': (261, 604), 'card_3': (331, 604),
     'water_sta': (104,640), 'water_end': (124, 660),
-    'bridge_lef': (89, 208), 'bridge_rig': (289, 208),
-    'opp_lit_lef': (89, 153), 'opp_lit_rig': (289, 153),
+    'bridge_lef': (89, 280), 'bridge_rig': (289, 280),
+    'opp_lit_lef': (89, 150), 'opp_lit_rig': (289, 150),
     'opp_bld_lef_sta': (75, 102), 'opp_bld_lef_end': (114, 103),
     'opp_bld_rig_sta': (275, 102), 'opp_bld_rig_end': (314, 103),
     'fight':(125,440),'sure':(190,600),
@@ -39,12 +39,12 @@ def display_bypos(card,desx,desy):
     time.sleep(0.2)
     if desx<poslib['field_sta'][0]:
         desx=poslib['field_sta'][0]
-    if desx<poslib['field_sta'][1]:
-        desx=poslib['field_sta'][1]
+    if desy<poslib['field_sta'][1]:
+        desy=poslib['field_sta'][1]
     if desx>poslib['field_end'][0]:
         desx=poslib['field_end'][0]
-    if desx>poslib['field_end'][1]:
-        desx=poslib['field_end'][1]
+    if desy>poslib['field_end'][1]:
+        desy=poslib['field_end'][1]
     click(orix+desx,oriy+desy)
 
 def display_byname(card,name):

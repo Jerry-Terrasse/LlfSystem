@@ -49,7 +49,6 @@ if __name__=='__main__':
         bld_lef=dcd.get_bld("opp_bld_lef")
         bld_rig=dcd.get_bld("opp_bld_rig")
         card_inf = dcd.get_card()
-        '''
         if bld_lef<0:
             out_bld_lef="DESTROYED;"
             bld_lef=100
@@ -60,7 +59,7 @@ if __name__=='__main__':
             out_bld_rig="DESTROYED;"
         else:
             out_bld_rig="%.2f%% RIGHT;" % (bld_rig*100/38)
-        '''
+        print(out_bld_lef,out_bld_rig)
         # print("%d WATER; %.2f%% LEFT; %.2f%% RIGHT;" % (water,bld_lef*100/38,bld_rig*100/38))
         water=dcd.get_water()
         if not rgr.started:
