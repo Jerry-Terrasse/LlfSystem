@@ -43,6 +43,7 @@ if __name__=='__main__':
     if len(sys.argv)>1:
         AUTO=True
     print("LLF AK IOI !!!")
+    dcd.load_images()
     rgr.fight_start()
     sgn.get_ori()
     while True:
@@ -55,7 +56,7 @@ if __name__=='__main__':
         else:
             out_bld_lef="%.2f%% LEFT;" % (bld_lef*100/38)
         if bld_rig<0:
-            bld_lef=100
+            bld_rig=100
             out_bld_rig="DESTROYED;"
         else:
             out_bld_rig="%.2f%% RIGHT;" % (bld_rig*100/38)

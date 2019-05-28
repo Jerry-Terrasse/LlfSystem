@@ -14,6 +14,8 @@ cardlib={
     'valkyrie':{'id':85,'cost':4,'pos':(0,10)},
     'wallbrkr':{'id':86,'cost':3,'pos':(0,-10)},
     'witch':{'id':87,'cost':5,'pos':(0,70)},
+	'skearmy':{'id':74,'cost':3,'pos':(0,0)},
+    'battleram':{'id':9,'cost':4,'pos':(0,-10)},
     'UNKNOWN':{'id':-1,'cost':99,'pos':(0,0)}
 }
 
@@ -30,7 +32,7 @@ def meeting(water,bld_lef,bld_rig,cards):
                 water-=3
                 sgn.display_byname('card_'+str(i),'opp_lit_'+posname)
                 continue
-            if cards[i]!='gobbarrel' and cards[i]!='wallbrkr' and cardlib[cards[i]]['cost']<=water:
+            if cards[i]!='gobbarrel' and cards[i]!='battleram' and cardlib[cards[i]]['cost']<=water:
                 sgn.display_bypos('card_'+str(i),posx+cardlib[cards[i]]['pos'][0],posy+cardlib[cards[i]]['pos'][1])
                 return
     else:
@@ -45,7 +47,7 @@ def meeting(water,bld_lef,bld_rig,cards):
                 if cards[i]=='gobbarrel':
                     sgn.display_byname('card_'+str(i),'opp_lit_'+posname)
                     return
-                if cards[i]=='wallbrkr':
+                if cards[i]=='battleram':
                     sgn.display_byname('card_'+str(i),'bridge_'+posname)
                     return
                 if cardlib[cards[i]]['cost']<minc:

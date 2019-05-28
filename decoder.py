@@ -8,20 +8,22 @@ pre_water=int()
 
 ignore_rec=[(0,0,380,37),(161,37,217,105),(72,105,107,135),(271,105,306,135),(72,376,107,411),(161,411,217,470),(271,376,306,411),(0,511,380,676)]
 
-# deck = ("archer","wallbrkr","babydrgn","bomber","knight","minion","gobbarrel","valkyrie")
-deck = ("archer","wallbrkr","babydrgn","witch","skegiant","arrows","gobbarrel","valkyrie")
+deck = ("archer","battleram","babydrgn","witch","skegiant","skearmy","gobbarrel","valkyrie")
+
+waters=list()
+icons=list()
+
 
 def get_card():
-    ans = ["","","",""]
-    for i in range(4):
-        get_image("card_"+str(i))
+    ans = ["", "", "", ""]
+    crd = [get_image("card_"+str(i)) for i in range(4)]
     for i in range(4):
         maxv = 0
-        for j in deck:
-            val = similarity("Sources/deck1/"+j+".png","card_"+str(i)+".png")
+        for j in range(8):
+            val = similarity(icons[j], crd[i])
             if maxv < val:
                 maxv = val
-                ans[i] = j
+                ans[i] = deck[j]
         if maxv < 420000:
             ans[i] = "UNKNOWN"
     print(ans)
@@ -32,9 +34,10 @@ def get_water():
     maxv=int()
     val=int()
     ans=int()
-    get_image("water")
+    wtr=get_image("water")
     for i in range(11):
-        val=similarity("water.png","Sources/water_"+str(i)+".png")
+        # val=similarity("water.png","Sources/water_"+str(i)+".png")
+        val=similarity(wtr,waters[i])
         if maxv<val:
             maxv=val
             ans=i
@@ -51,8 +54,8 @@ def get_water():
 
 def get_bld(which):
     ret=int()
-    get_image(which)
-    bld=get_arr(which+".png")
+    bld=get_image(which)
+    # bld=get_arr(which+".png")
     for i in bld[0]:
         ret+=i[0]<100 or i[0]>200
         ret+=i[1]<100 or i[1]>200
@@ -69,12 +72,12 @@ def get_bld(which):
     return ret
 
 def war_at():
-    get_image("whole","0")
-    get_image("whole","1")
+    sight=get_image("whole")
+    sight_=get_image("whole")
     retx=int()
     rety=int()
     cnt=int()
-    map=match_diff("whole0.png","whole1.png")
+    map=match_diff(sight,sight_)
     x,y,z=map.shape
     for rec in ignore_rec:
         map[rec[1]:rec[3],rec[0]:rec[2],:] = 0
@@ -93,6 +96,11 @@ def war_at():
         print("war{}")
         return 0,0,0
 
+def load_images():
+    global waters,icons
+    waters=[get_arr("Sources/water_"+str(i)+".png") for i in range(11)]
+    icons=[get_arr("Sources/deck1/"+i+".png") for i in deck]
+    return
 
 if __name__=='__main__':
     print("Decoder Here")

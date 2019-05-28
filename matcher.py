@@ -3,28 +3,29 @@
 import cv2
 import numpy as np
 
-def similarity(image,target):
-    img=cv2.imread(image,0)
-    tar=cv2.imread(target,0)
+def similarity(img,tar):
+    # img=cv2.imread(image,0)
+    # tar=cv2.imread(target,0)
+    img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    tar=cv2.cvtColor(tar,cv2.COLOR_BGR2GRAY)
     img=get_two(img)
     tar=get_two(tar)
     ret=cv2.compare(img,tar,cv2.CMP_EQ)
     ret=np.sum(ret)
     return ret
 
-def match(image,target):
-    img=cv2.imread(image,0)
-    tar=cv2.imread(target,0)
-#    ret=cv2.matchTemplate(img,tar,cv2.TM_SQDIFF_NORMED)
+def match(img,tar):
+    # img=cv2.imread(image,0)
+    # tar=cv2.imread(target,0)
     ret=cv2.matchTemplate(img,tar,cv2.TM_CCOEFF_NORMED)
     ret=cv2.minMaxLoc(ret)
     return ret
 
-def match_pos(image,target):
-    return match(image,target)[3]
+def match_pos(img,tar):
+    return match(img,tar)[3]
 
-def match_val(image,target):
-    return match(image,target)[1]
+def match_val(img,tar):
+    return match(img,tar)[1]
 
 def get_arr(image,through=None):
     ret=cv2.imread(image)
@@ -37,14 +38,13 @@ def get_two(img,thresh=None):
         ret,img=cv2.threshold(img,0,255,cv2.THRESH_BINARY|cv2.THRESH_OTSU)
     else:
         ret,img=cv2.threshold(img,thresh,255,cv2.THRESH_BINARY)
-    # ret,img=cv2.threshold(img,0,255,cv2.THRESH_BINARY|cv2.THRESH_TRIANGLE)
     return img
 
-def match_diff(image,target):
-    img=get_arr(image)
-    tar=get_arr(target)
-    ret=img
+def match_diff(img,tar):
+    # img=get_arr(image)
+    # tar=get_arr(target)
     x,y,z=img.shape
+    ret=np.zeros(img.size).reshape((x,y,z))
     for i in range(x):
         for j in range(y):
             for k in range(z):
