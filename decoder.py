@@ -1,12 +1,14 @@
 from matcher import *
 from surgeon import *
 from regulator import *
+import time
+import cv2 as cv
 
 
 same_cnt=int()
 pre_water=int()
 
-ignore_rec=[(0,0,380,37),(161,37,217,105),(72,105,107,135),(271,105,306,135),(72,376,107,411),(161,411,217,470),(271,376,306,411),(0,511,380,676)]
+ignore_rec=[(0,0,380,37),(161,37,217,105),(72,105,107,135),(271,105,306,135),(72,376,107,411),(161,411,217,470),(271,376,306,411),(0,511,380,676),(217,443,350,511)]
 
 deck = ("archer","battleram","babydrgn","witch","skegiant","skearmy","gobbarrel","valkyrie")
 
@@ -26,7 +28,7 @@ def get_card():
                 ans[i] = deck[j]
         if maxv < 420000:
             ans[i] = "UNKNOWN"
-    print(ans)
+    #print(ans)
     return ans
 
 def get_water():
@@ -60,7 +62,7 @@ def get_bld(which):
         ret+=i[0]<100 or i[0]>200
         ret+=i[1]<100 or i[1]>200
     if ret<20:
-        return -1
+        return 99
     ret=0
     bld=bld[:,:,2]
     bld=get_two(bld,144)
@@ -74,6 +76,8 @@ def get_bld(which):
 def war_at():
     sight=get_image("whole")
     sight_=get_image("whole")
+    #cv.imwrite("D:/"+str(time.time())+".png",sight);
+    #cv.imwrite("D:/"+str(time.time())+".png",sight_);
     retx=int()
     rety=int()
     cnt=int()
@@ -90,10 +94,10 @@ def war_at():
                     cnt+=1
     if cnt:
         # print("DECODER: war at (%d,%d,%d)" % (retx//cnt,rety//cnt,cnt))
-        print("war{%d,%d,%d}" % (retx//cnt,rety//cnt,cnt))
+        # print("war{%d,%d,%d}" % (retx//cnt,rety//cnt,cnt))
         return retx//cnt,rety//cnt,cnt
     else:
-        print("war{}")
+        #print("war{}")
         return 0,0,0
 
 def load_images():

@@ -1,5 +1,14 @@
 import surgeon as sgn
 import decoder as dcd
+from random import randint
+
+posx=int()
+posy=int()
+fire=int()
+water=int()
+bld_lef=int()
+bld_rig=int()
+cards=list()
 
 cardlib={
     'archer':{'id':0,'cost':3,'pos':(0,80)},
@@ -19,9 +28,15 @@ cardlib={
     'UNKNOWN':{'id':-1,'cost':99,'pos':(0,0)}
 }
 
-def meeting(water,bld_lef,bld_rig,cards):
+
+def meeting():
+    global posx,posy,fire,bld_lef,bld_rig,water,cards
+    cards=dcd.get_card()
+    bld_lef=dcd.get_bld("opp_bld_lef")
+    bld_rig=dcd.get_bld("opp_bld_rig")
     posx,posy,fire=dcd.war_at()
     water=dcd.get_water()
+    echo()
     if fire>=100:
         for i in range(4):
             if water>=5 and fire<=1000 and cards[i]=='gobbarrel':
@@ -55,6 +70,11 @@ def meeting(water,bld_lef,bld_rig,cards):
                     id=i
             sgn.display_byname('card_'+str(i),'bottom_'+posname)
     return
+
+def echo():
+    print(water, cards, "(%d, %d)" % (bld_lef,bld_rig), "{%d,%d,%d}" % (posx,posy,fire))
+    sgn.emoji(randint(0,5))
+
 
 if __name__=='__main__':
     print("Policians Here")

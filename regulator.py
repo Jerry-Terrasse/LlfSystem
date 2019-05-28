@@ -6,8 +6,8 @@ ori_time=int()
 cur_time=int()
 pre_time=int()
 waves=int()
-started=False
 double_water=False
+AUTO=False
 
 
 def fight_start():
@@ -20,7 +20,11 @@ def fight_start():
 def fight_end():
     global started
     print("Fight Finished.")
-    started=False
+    if AUTO:
+        next_fight()
+        fight_start()
+    else:
+        exit()
 
 def time_past():
     global cur_time

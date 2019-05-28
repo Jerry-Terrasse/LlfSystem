@@ -16,12 +16,14 @@ poslib={
     'opp_lit_lef': (89, 150), 'opp_lit_rig': (289, 150),
     'opp_bld_lef_sta': (75, 102), 'opp_bld_lef_end': (114, 103),
     'opp_bld_rig_sta': (275, 102), 'opp_bld_rig_end': (314, 103),
-    'fight':(125,440),'sure':(190,600),
+    'fight':(125,440),'sure':(190,600),'emtentrance': (35,563),
 	'card_0_sta':(88,575),'card_0_end':(146,617),
 	'card_1_sta':(160,575),'card_1_end':(218,617),
 	'card_2_sta':(232,575),'card_2_end':(290,617),
 	'card_3_sta':(304,575),'card_3_end':(362,617),
     'field_sta':(28,65),'field_end':(350,500),
+    'emote0': (97,452), 'emote1': (165,452), 'emote2': (232,451), 'emote3': (298,451),
+    'emote4': (97,513), 'emote5': (165,513), 'emote6': (232,513), 'emote7': (298,513),
     'whole_sta':(0,0),'whole_end':(381,677)
 }
 
@@ -36,7 +38,7 @@ def get_ori():
 
 def display_bypos(card,desx,desy):
     tp.click(orix+poslib[card][0],oriy+poslib[card][1])
-    time.sleep(0.2)
+    time.sleep(0.3)
     if desx<poslib['field_sta'][0]:
         desx=poslib['field_sta'][0]
     if desy<poslib['field_sta'][1]:
@@ -49,7 +51,7 @@ def display_bypos(card,desx,desy):
 
 def display_byname(card,name):
     tp.click(orix+poslib[card][0],oriy+poslib[card][1])
-    time.sleep(0.2)
+    time.sleep(0.3)
     tp.click(orix+poslib[name][0],oriy+poslib[name][1])
 
 def get_vector():
@@ -65,6 +67,11 @@ def next_fight():
     time.sleep(3)
     tp.click(orix+poslib['fight'][0],oriy+poslib['fight'][1])
     time.sleep(10)
+
+def emoji(id):
+    tp.click(orix+poslib['emtentrance'][0],oriy+poslib['emtentrance'][1])
+    time.sleep(0.3)
+    tp.click(orix+poslib['emote'+str(id)][0],oriy+poslib['emote'+str(id)][1])
 
 
 if __name__=='__main__':
