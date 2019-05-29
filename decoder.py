@@ -10,7 +10,7 @@ pre_water=int()
 
 ignore_rec=[(0,0,380,37),(161,37,217,105),(72,105,107,135),(271,105,306,135),(72,376,107,411),(161,411,217,470),(271,376,306,411),(0,511,380,676),(217,443,350,511)]
 
-deck = ("archer","battleram","babydrgn","witch","skegiant","skearmy","gobbarrel","valkyrie")
+deck = ("cannon","battleram","prince","witch","skegiant","skearmy","gobbarrel","valkyrie")
 
 waters=list()
 icons=list()
@@ -103,7 +103,7 @@ def war_at():
 def load_images():
     global waters,icons
     waters=[get_arr("Sources/water_"+str(i)+".png") for i in range(11)]
-    icons=[get_arr("Sources/deck1/"+i+".png") for i in deck]
+    icons=[get_arr("Sources/cardlib/"+i+".png") for i in deck]
     return
 
 if __name__=='__main__':

@@ -60,5 +60,9 @@ if __name__=='__main__':
             out_bld_rig="%.2f%% RIGHT;" % (bld_rig*100/38)
         print(out_bld_lef,out_bld_rig)
         '''
-        plc.meeting()
-        time.sleep(1)
+        wait=plc.meeting()
+        sgn.emoji(randint(0,4))
+        if wait:
+            time.sleep(2)
+        else:
+            time.sleep(1)
