@@ -59,8 +59,8 @@ def get_bld(which):
     bld=get_image(which)[:,:,2]
     # bld=get_arr(which+".png")
     for i in bld[0]:
-        ret+=(60<i and i<80) or (210<i and i<230)
-    if ret<17:
+        ret+=(68<i and i<81) or (210<i and i<230)
+    if ret<22:
         return 99
     ret=0
     bld=get_two(bld,144)

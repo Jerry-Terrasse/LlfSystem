@@ -68,6 +68,7 @@ def meeting():
                 posname=cardlib[id]['pos']+posext
                 sgn.display_byname('card_'+str(cards.index(id)),posname)
                 wait=id=='gobbarrel'
+                return wait
             for card in cards:
                 if True: # for spell
                     if minc>cardlib[card]['cost']:
