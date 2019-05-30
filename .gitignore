@@ -1,9 +1,7 @@
 __pycache__
-Temp
 Achievements
 *.bak
 *.png
 *.lnk
 !Sources/*.png
 !Sources/cardlib/*.png
-!Sources/deck1/*.png
